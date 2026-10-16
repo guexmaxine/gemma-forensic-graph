@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesa de Inteligência Forense - Caso Motorola IPED (17 Entidades)</title>
+    <!-- Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Vis.js Network for Knowledge Graph -->
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- TOP HEADER -->
+    <header class="app-header">
+        <div class="header-left">
+            <div class="brand-logo">
+                <span class="logo-icon">⚖️</span>
+                <div>
+                    <h1 class="brand-title">MESA DE RESOLUÇÃO FORENSE</h1>
+                    <span class="brand-subtitle">Motorola Moto G6 Plus &bull; Alvo: <strong>Diogo Gonçalves Costa</strong></span>
+                </div>
+            </div>
+            <a href="http://127.0.0.1:3000" target="_blank" class="btn-external-link" title="Abrir a plataforma Node.js principal">
+                <span>🏛️ Ir para Interface Node.js (:3000)</span>
+            </a>
+        </div>
+
+        <div class="header-center">
+            <nav class="nav-tabs">
+                <button class="nav-tab active" data-view="viewChat" id="tabChat">
+                    <span class="tab-icon">💬</span>
+                    <span>Leitor Forense</span>
+                </button>
+                <button class="nav-tab" data-view="viewInbox" id="tabInbox">
+                    <span class="tab-icon">📥</span>
+                    <span>Inbox de Dedução</span>
+                    <span class="badge-count" id="badgePendingCount">0</span>
+                </button>
+                <button class="nav-tab" data-view="viewGraph" id="tabGraph">
+                    <span class="tab-icon">🕸️</span>
+                    <span>Grafo Multi-Caso</span>
+                </button>
+                <button class="nav-tab" data-view="viewTaxonomy" id="tabTaxonomy">
+                    <span class="tab-icon">🏷️</span>
+                    <span>17 Categorias</span>
+                </button>
+            </nav>
+        </div>
+
+        <div class="header-right">
+            <div class="model-badge">
+                <span class="status-indicator"></span>
+                <span>Motor: <strong>Faixa 3B/4B (Llama 3.2 / Gemma)</strong></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- KPI GLOBAL STATS BAR -->
+    <section class="kpi-banner">
+        <div class="kpi-item">
+            <span class="kpi-label">Mensagens Analisadas</span>
+            <span class="kpi-val text-cyan" id="kpiMessages">10.701</span>
+            <span class="kpi-sub">925 conversas mapeadas</span>
+        </div>
+        <div class="kpi-item">
+            <span class="kpi-label">Entidades Classificadas</span>
+            <span class="kpi-val text-emerald" id="kpiEntities">21.080</span>
+            <span class="kpi-sub">17 categorias estritas</span>
+        </div>
+        <div class="kpi-item">
+            <span class="kpi-label">Valores Monetários</span>
+            <span class="kpi-val text-amber" id="kpiMoney">370</span>
+            <span class="kpi-sub">Transações e menções a Pix</span>
+        </div>
+        <div class="kpi-item">
+            <span class="kpi-label">Documentos & Processos</span>
+            <span class="kpi-val text-rose" id="kpiDocs">1.669</span>
+            <span class="kpi-sub">Comprovantes, NFs, autos</span>
+        </div>
+        <div class="kpi-item">
+            <span class="kpi-label">Organizações & Bancos</span>
+            <span class="kpi-val text-purple" id="kpiOrgs">1.619</span>
+            <span class="kpi-sub">Nubank, Infortec, Apple</span>
+        </div>
+    </section>
+
+    <!-- MAIN APP CONTAINER -->
+    <main class="main-content">
+
+        <!-- ================= VISÃO 1: LEITOR DE CHAT AUMENTADO ================= -->
+        <div id="viewChat" class="view-panel active">
+            <div class="chat-workspace">
+                
+                <!-- 1. BARRA LATERAL ESQUERDA: LISTA DE CONVERSAS -->
+                <aside class="chat-sidebar" id="sidebarChats">
+                    <div class="sidebar-header">
+                        <input type="text" id="chatSearch" placeholder="🔍 Buscar contato, telefone ou grupo..." class="search-input">
+                        <button class="btn-icon" id="btnToggleSidebar" title="Recolher painel de conversas">◀</button>
+                    </div>
+                    <div class="sidebar-filters">
+                        <button class="chip-filter active" data-filter="all">Todas (925)</button>
+                        <button class="chip-filter" data-filter="groups">👥 Grupos</button>
+                        <button class="chip-filter" data-filter="private">👤 Privados</button>
+                        <button class="chip-filter" data-filter="money">💵 Com Pix</button>
+                    </div>
+                    <div class="chats-list-container" id="chatsList">
+                        <div class="loading-state">Carregando índice de conversas...</div>
+                    </div>
+                </aside>
+
+                <!-- 2. PAINEL CENTRAL: LEITOR DE MENSAGENS COM MÁXIMA LEGIBILIDADE -->
+                <section class="chat-feed-workspace" id="chatFeedWorkspace">
+                    
+                    <!-- Cabeçalho da Conversa Ativa -->
+                    <header class="conversation-header" id="conversationHeader">
+                        <div class="conv-header-left">
+                            <button class="btn-expand-sidebar" id="btnExpandSidebar" style="display: none;" title="Mostrar lista de conversas">☰ Conversas</button>
+                            <div class="conv-avatar" id="activeAvatar">👤</div>
+                            <div class="conv-title-block">
+                                <h2 id="activeChatTitle">Selecione uma conversa</h2>
+                                <span class="conv-subtitle" id="activeChatSubtitle">Nenhuma conversa selecionada</span>
+                            </div>
+                        </div>
+
+                        <div class="conv-header-right">
+                            <div class="chat-quick-search">
+                                <input type="text" id="inChatSearch" placeholder="Filtrar texto nesta conversa..." class="quick-search-input">
+                            </div>
+                            <button class="btn btn-secondary btn-sm" id="btnToggleXray" title="Exibir/ocultar dossiê do interlocutor">
+                                <span>🔬 Raio-X</span>
+                            </button>
+                        </div>
+                    </header>
+
+                    <!-- BARRA DE FILTRO POR 17 CATEGORIAS DE ENTIDADES -->
+                    <div class="taxonomy-chips-bar" id="taxonomyBar">
+                        <span class="taxonomy-bar-title">Filtrar Entidades:</span>
+                        <button class="tax-chip active" data-cat="ALL">Todas</button>
+                        <button class="tax-chip chip-pessoa" data-cat="PESSOA">👤 PESSOA</button>
+                        <button class="tax-chip chip-dinheiro" data-cat="VALOR_MONETARIO">💵 VALOR MONETÁRIO</button>
+                        <button class="tax-chip chip-org" data-cat="ORGANIZACAO">🏢 ORGANIZAÇÃO</button>
+                        <button class="tax-chip chip-local" data-cat="LOCAL">📍 LOCAL</button>
+                        <button class="tax-chip chip-doc" data-cat="DOCUMENTO">📄 DOCUMENTO</button>
+                        <button class="tax-chip chip-proc" data-cat="PROCESSO">⚖️ PROCESSO</button>
+                        <button class="tax-chip chip-veic" data-cat="VEICULO">🚗 VEÍCULO</button>
+                        <button class="tax-chip chip-imovel" data-cat="IMOVEL">🏠 IMÓVEL</button>
+                        <button class="tax-chip chip-tel" data-cat="TELEFONE">📞 TELEFONE</button>
+                        <button class="tax-chip chip-cpf" data-cat="CPF_CNPJ">🪪 CPF/CNPJ</button>
+                        <button class="tax-chip chip-cargo" data-cat="FUNCAO_CARGO">💼 CARGO</button>
+                        <button class="tax-chip chip-fam" data-cat="RELACAO_FAMILIAR">👨‍👩‍👦 FAMÍLIA</button>
+                        <button class="tax-chip chip-data" data-cat="DATA_HORA">📅 DATA/HORA</button>
+                        <button class="tax-chip chip-outro" data-cat="OUTRO">📦 OUTRO/DISP</button>
+                    </div>
+
+                    <!-- FEED DE MENSAGENS REALMENTE LEGÍVEL -->
+                    <div class="messages-stream" id="messagesStream">
+                        <div class="empty-stream">
+                            <span class="empty-icon">💬</span>
+                            <h3>Selecione uma conversa para leitura</h3>
+                            <p>Utilize a lista lateral para visualizar as conversas com anotações automáticas das 17 categorias de entidades forenses.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. PAINEL LATERAL DIREITO: DOSSIÊ RAIO-X DO INTERLOCUTOR -->
+                <aside class="xray-drawer" id="xrayDrawer">
+                    <div class="drawer-header">
+                        <h3>🔬 RAIO-X FORENSE</h3>
+                        <button class="btn-close-drawer" id="btnCloseXray">&times;</button>
+                    </div>
+                    <div class="drawer-content" id="xrayContent">
+                        <div class="drawer-placeholder">
+                            <span>Clique em qualquer entidade ou mensagem para inspecionar cruzamentos no SIMBA, outros IPEDs e roteadores Wi-Fi.</span>
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+
+        <!-- ================= VISÃO 2: INBOX DE DEDUÇÃO (TINDER DE MERGE) ================= -->
+        <div id="viewInbox" class="view-panel">
+            <div class="inbox-wrapper">
+                <header class="inbox-top-bar">
+                    <div>
+                        <h2>📥 INBOX DE DEDUÇÃO E FUSÃO DE ENTIDADES</h2>
+                        <p>Triagem assistida por IA: Heurística Temporal Pix (SIMBA), Triangulação Cross-IPED e Pontes de Resíduos Conversacionais.</p>
+                    </div>
+                </header>
+                <div class="inbox-cards-grid" id="inboxCards">
+                    <!-- Cards de Fusão gerados dinamicamente via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= VISÃO 3: GRAFO MULTI-CASO ================= -->
+        <div id="viewGraph" class="view-panel">
+            <div class="graph-wrapper">
+                <div class="graph-top-controls">
+                    <div class="g-info">
+                        <h3>🕸️ GRAFO DE CONHECIMENTO FORENSE MULTI-CASO</h3>
+                        <span>Nós mapeados conforme as 17 categorias de entidades e conexões de canal privado</span>
+                    </div>
+                    <div class="g-actions">
+                        <button class="btn btn-secondary btn-sm" id="btnFitGraph">🎯 Centralizar Visão</button>
+                        <button class="btn btn-secondary btn-sm" id="btnPauseGraph">⏸️ Pausar Física</button>
+                    </div>
+                </div>
+                <div class="graph-canvas-box" id="networkGraph"></div>
+            </div>
+        </div>
+
+        <!-- ================= VISÃO 4: TAXONOMIA COMPLETA (17 CATEGORIAS) ================= -->
+        <div id="viewTaxonomy" class="view-panel">
+            <div class="taxonomy-dashboard">
+                <header class="section-title-wrap">
+                    <h2>🏷️ TAXONOMIA FORENSE DE 17 CATEGORIAS DE ENTIDADES</h2>
+                    <p>Mapeamento de todas as 21.080 ocorrências extraídas em 10.701 mensagens do aparelho apreendido.</p>
+                </header>
+                <div class="taxonomy-grid" id="taxonomyStatsGrid">
+                    <!-- Gerado dinamicamente via JS com os 17 contadores -->
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- TOAST NOTIFICATIONS -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="graph.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,349 @@
+[
+  {
+    "id": 1,
+    "text": "148.028.237-54 Wendel praxedes Pix : Nubank",
+    "gold": [
+      {
+        "text": "148.028.237-54",
+        "categoria": "CPF_CNPJ"
+      },
+      {
+        "text": "Wendel praxedes",
+        "categoria": "PESSOA"
+      },
+      {
+        "text": "Nubank",
+        "categoria": "ORGANIZACAO"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "text": "Chave pix (27) 992234022 nubank Brayan Gouvea Andrade",
+    "gold": [
+      {
+        "text": "(27) 992234022",
+        "categoria": "TELEFONE"
+      },
+      {
+        "text": "nubank",
+        "categoria": "ORGANIZACAO"
+      },
+      {
+        "text": "Brayan Gouvea Andrade",
+        "categoria": "PESSOA"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "text": "Rafael Alves Bocaiuva 27998569389 Pix Bradesco",
+    "gold": [
+      {
+        "text": "Rafael Alves Bocaiuva",
+        "categoria": "PESSOA"
+      },
+      {
+        "text": "27998569389",
+        "categoria": "TELEFONE"
+      },
+      {
+        "text": "Bradesco",
+        "categoria": "ORGANIZACAO"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "text": "Assino a carteira de todos na minha empresa! Com 5 dias dou baixa E daqui do banco mesmo Eu libero o seguro desemprego",
+    "gold": [
+      {
+        "text": "carteira",
+        "categoria": "DOCUMENTO"
+      },
+      {
+        "text": "5 dias",
+        "categoria": "DATA_HORA"
+      },
+      {
+        "text": "banco",
+        "categoria": "ORGANIZACAO"
+      },
+      {
+        "text": "seguro desemprego",
+        "categoria": "TRIBUTO"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "text": "50 pessoas 50mil por mês No caso a pessoa fica recebendo por 4 messes",
+    "gold": [
+      {
+        "text": "50mil",
+        "categoria": "VALOR_MONETARIO"
+      },
+      {
+        "text": "4 messes",
+        "categoria": "DATA_HORA"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "text": "Boa noite, tudo bem por aí?",
+    "gold": []
+  },
+  {
+    "id": 7,
+    "text": "estarei em casa só dia 13 às 15:30",
+    "gold": [
+      {
+        "text": "dia 13 às 15:30",
+        "categoria": "DATA_HORA"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "text": "Thaywan Da Silva Lemos Chaves 141.207.447-95 31/03/1998 Branco 21540-020 Rua dos topázios, 434 casa 2 - Rocha Miranda",
+    "gold": [
+      {
+        "text": "Thaywan Da Silva Lemos Chaves",
+        "categoria": "PESSOA"
+      },
+      {
+        "text": "141.207.447-95",
+        "categoria": "CPF_CNPJ"
+      },
+      {
+        "text": "31/03/1998",
+        "categoria": "DATA_HORA"
+      },
+      {
+        "text": "Rua dos topázios, 434",
+        "categoria": "LOCAL"
+      },
+      {
+        "text": "Rocha Miranda",
+        "categoria": "LOCAL"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "text": "Yara Thais Lauriano Honorato 225.292.777-10 18/11/2003 Rua Mariana Do Nascimento, Nº 91",
+    "gold": [
+      {
+        "text": "Yara Thais Lauriano Honorato",
+        "categoria": "PESSOA"
+      },
+      {
+        "text": "225.292.777-10",
+        "categoria": "CPF_CNPJ"
+      },
+      {
+        "text": "18/11/2003",
+        "categoria": "DATA_HORA"
+      },
+      {
+        "text": "Rua Mariana Do Nascimento, Nº 91",
+        "categoria": "LOCAL"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "text": "Fiz o pix de 1500 pra conta do João Batista no Nubank em Vitória ontem",
+    "gold": [
+      {
+        "text": "1500",
+        "categoria": "VALOR_MONETARIO"
+      },
+      {
+        "text": "João Batista",
+        "categoria": "PESSOA"
+      },
+      {
+        "text": "Nubank",
+        "categoria": "ORGANIZACAO"
+      },
+      {
+        "text": "Vitória",
+        "categoria": "LOCAL"
+      },
+      {
+        "text": "ontem",
+        "categoria": "DATA_HORA"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "text": "O celular Motorola Moto G6 Plus de Diogo foi guardado no galpão de Cariacica",
+    "gold": [
+      {
+        "text": "Motorola Moto G6 Plus",
+        "categoria": "OUTRO"
+      },
+      {
+        "text": "Diogo",
+        "categoria": "PESSOA"
+      },
+      {
+        "text": "galpão",
+        "categoria": "IMOVEL"
+      },
+      {
+        "text": "Cariacica",
+        "categoria": "LOCAL"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "text": "Consta no processo criminal nº 0012450-88.2022.8.08.0024 da 2ª Vara Criminal",
+    "gold": [
+      {
+        "text": "0012450-88.2022.8.08.0024",
+        "categoria": "PROCESSO"
+      },
+      {
+        "text": "2ª Vara Criminal",
+        "categoria": "ORGANIZACAO"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "text": "Ele veio com o Corolla prata placa RQX4A12 entregar a encomenda",
+    "gold": [
+      {
+        "text": "Corolla",
+        "categoria": "VEICULO"
+      },
+      {
+        "text": "RQX4A12",
+        "categoria": "VEICULO"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "text": "Minha mãe e meu irmão já transferiram os R$ 2.300",
+    "gold": [
+      {
+        "text": "mãe",
+        "categoria": "RELACAO_FAMILIAR"
+      },
+      {
+        "text": "irmão",
+        "categoria": "RELACAO_FAMILIAR"
+      },
+      {
+        "text": "R$ 2.300",
+        "categoria": "VALOR_MONETARIO"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "text": "O patrão mandou o gerente do posto recolher o malote",
+    "gold": [
+      {
+        "text": "patrão",
+        "categoria": "FUNCAO_CARGO"
+      },
+      {
+        "text": "gerente",
+        "categoria": "FUNCAO_CARGO"
+      },
+      {
+        "text": "posto",
+        "categoria": "IMOVEL"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "text": "Pagou a guia do DARF e a taxa de custas do cartório?",
+    "gold": [
+      {
+        "text": "DARF",
+        "categoria": "TRIBUTO"
+      },
+      {
+        "text": "taxa de custas",
+        "categoria": "TRIBUTO"
+      },
+      {
+        "text": "cartório",
+        "categoria": "ORGANIZACAO"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "text": "Já aumenta o limite pix de todas Para 200mil",
+    "gold": [
+      {
+        "text": "200mil",
+        "categoria": "VALOR_MONETARIO"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "text": "Manda o comprovante pro email wendelpraxedes180@gmail.com",
+    "gold": [
+      {
+        "text": "comprovante",
+        "categoria": "DOCUMENTO"
+      },
+      {
+        "text": "wendelpraxedes180@gmail.com",
+        "categoria": "EMAIL"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "text": "A reunião com os advogados do escritório Infortec foi remarcada para amanhã",
+    "gold": [
+      {
+        "text": "advogados",
+        "categoria": "FUNCAO_CARGO"
+      },
+      {
+        "text": "Infortec",
+        "categoria": "ORGANIZACAO"
+      },
+      {
+        "text": "amanhã",
+        "categoria": "DATA_HORA"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "text": "Tito falou que o Gordão da van vai levar o dinheiro",
+    "gold": [
+      {
+        "text": "Tito",
+        "categoria": "PESSOA"
+      },
+      {
+        "text": "Gordão",
+        "categoria": "PESSOA"
+      },
+      {
+        "text": "van",
+        "categoria": "VEICULO"
+      },
+      {
+        "text": "dinheiro",
+        "categoria": "VALOR_MONETARIO"
+      }
+    ]
+  }
+]

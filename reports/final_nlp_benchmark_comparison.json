@@ -1,0 +1,73 @@
+{
+  "timestamp": "2026-10-16 09:55:25",
+  "total_test_samples": 20,
+  "total_gold_entities": 57,
+  "benchmark_results": [
+    {
+      "metodo": "1. Regex/Heurístico Baseline",
+      "tempo_ms": 5.3,
+      "ms_por_frase": 0.26,
+      "tp": 36,
+      "fp": 7,
+      "fn": 21,
+      "precision": 83.7,
+      "recall": 63.2,
+      "f1_score": 72.0
+    },
+    {
+      "metodo": "2. spaCy pt_core_news_sm",
+      "tempo_ms": 101.16,
+      "ms_por_frase": 5.06,
+      "tp": 15,
+      "fp": 11,
+      "fn": 42,
+      "precision": 57.7,
+      "recall": 26.3,
+      "f1_score": 36.1
+    },
+    {
+      "metodo": "3. GLiNER v2.1 (Zero-Shot Isolado)",
+      "tempo_ms": 4130.59,
+      "ms_por_frase": 206.53,
+      "tp": 37,
+      "fp": 19,
+      "fn": 20,
+      "precision": 66.1,
+      "recall": 64.9,
+      "f1_score": 65.5
+    },
+    {
+      "metodo": "4. Solução Híbrida (Zero-Shot)",
+      "tempo_ms": 3608.2,
+      "ms_por_frase": 180.41,
+      "tp": 52,
+      "fp": 5,
+      "fn": 5,
+      "precision": 91.2,
+      "recall": 91.2,
+      "f1_score": 91.2
+    },
+    {
+      "metodo": "5. GLiNER Fine-Tuned (Isolado)",
+      "tempo_ms": 3994.67,
+      "ms_por_frase": 199.73,
+      "tp": 35,
+      "fp": 17,
+      "fn": 22,
+      "precision": 67.3,
+      "recall": 61.4,
+      "f1_score": 64.2
+    },
+    {
+      "metodo": "6. Solução Híbrida Fine-Tuned (IDEAL)",
+      "tempo_ms": 3530.67,
+      "ms_por_frase": 176.53,
+      "tp": 47,
+      "fp": 6,
+      "fn": 10,
+      "precision": 88.7,
+      "recall": 82.5,
+      "f1_score": 85.5
+    }
+  ]
+}

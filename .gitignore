@@ -1,0 +1,29 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local SQLite databases (private forensic case data)
+*.db
+*.sqlite
+*.sqlite3
+data/*.db
+data/full_processed_dataset.json
+data/finetune/
+
+# Scratch & temporary debug files
+scratch/
+test_save/
+models/test_save/
+*.log
+
+# Large binary model weights (Use models/gliner_forensic_finetuned/download_weights.py or GitHub Releases)
+*.bin
+models/gliner_forensic_finetuned/*.bin
+
+# Node & IDE
+node_modules/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
